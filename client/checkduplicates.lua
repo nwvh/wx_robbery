@@ -1,7 +1,17 @@
 local positions = {}
 local duplicates = {}
 
-for _, location in ipairs(wx.Locations) do
+for _, location in ipairs(wx.RegisterLocations) do
+    local position = location.Position
+
+    if positions[position] then
+        table.insert(duplicates, position)
+    else
+        positions[position] = true
+    end
+end
+
+for _, location in ipairs(wx.SafeLocations) do
     local position = location.Position
 
     if positions[position] then

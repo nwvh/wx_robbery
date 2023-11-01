@@ -1,5 +1,5 @@
 ESX = exports["es_extended"]:getSharedObject()
-
+local states = {}
 
 lib.callback.register('wx_robbery:secret', function()
     return SECRET
@@ -28,9 +28,17 @@ RegisterNetEvent('wx_robbery:getReward',function (item,amount,secret)
     end
 end)
 
-RegisterNetEvent('wx_robbery:lockpickedSafe',function (item)
+RegisterNetEvent('wx_robbery:usedItem',function (item)
     exports.ox_inventory:RemoveItem(source, item, 1)
 end)
+
+-- RegisterNetEvent('wx_robbery:setState',function (store,state)
+--     table.insert(states,{store = state})
+-- end)
+
+-- lib.callback.register('wx_robbery:getStoreState', function(store)
+--     return states[store]
+-- end)
 
 function GenSecret(length)
     local charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"

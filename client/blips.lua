@@ -1,4 +1,4 @@
-for k,v in pairs(wx.Locations) do
+for k,v in pairs(wx.SafeLocations) do
     if v.Blip then
         local blip = AddBlipForCoord(v.Position.x,v.Position.y,v.Position.z)
         SetBlipSprite(blip, 255)
